@@ -7,7 +7,7 @@ import { Button } from "../Button/Button";
 import { plus } from "../../utils/Icons";
 
 export const Form = () => {
-  const { addIncome, getIncomes, error } = useGlobalContext();
+  const { addExpenses, getExpenses, error } = useGlobalContext();
   const [inputState, setInputState] = React.useState({
     title: "",
     amount: "",
@@ -21,7 +21,7 @@ export const Form = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    addIncome(inputState);
+    addExpenses(inputState);
     setInputState({
       title: "",
       amount: "",
@@ -29,10 +29,10 @@ export const Form = () => {
       category: "",
       description: "",
     });
-    getIncomes();
+    getExpenses();
   };
   return (
-    <FormStyled onSubmit={handleSubmit}>
+    <ExpenseFormStyled onSubmit={handleSubmit}>
       {error && <p className="error">{error}</p>}
       <div className="input-control">
         <input
@@ -73,13 +73,13 @@ export const Form = () => {
           <option value="" disabled>
             Select Option
           </option>
-          <option value="salary">Salary</option>
-          <option value="freelancing">Freelancing</option>
-          <option value="investments">Investments</option>
-          <option value="stocks">Stocks</option>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="bank">Bank Transfer</option>
-          <option value="youtube">Youtube</option>
+          <option value="education">Education</option>
+          <option value="groceries">Groceries</option>
+          <option value="health">Health</option>
+          <option value="subscriptions">Petrol</option>
+          <option value="takeaways">Takeaways</option>
+          <option value="clothing">Clothing</option>
+          <option value="travelling">Travelling</option>
           <option value="other">Other</option>
         </select>
       </div>
@@ -95,7 +95,7 @@ export const Form = () => {
       </div>
       <div className="submit-btn">
         <Button
-          name={"Add Income"}
+          name={"Add Expense"}
           icon={plus}
           bg={"var(--color-accent)"}
           color={"#fff"}
@@ -103,11 +103,11 @@ export const Form = () => {
           bRad={"30px"}
         />
       </div>
-    </FormStyled>
+    </ExpenseFormStyled>
   );
 };
 
-const FormStyled = styled.form`
+const ExpenseFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;

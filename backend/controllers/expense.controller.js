@@ -12,15 +12,15 @@ exports.addExpense = async (req, res) => {
   });
   try {
     if (!title || !amount || !category || !description) {
-      res.status(400).json({ message: "Please fill all the fields" });
+      return res.status(400).json({ message: "Please fill all the fields" });
     }
     if (amount < 0 || amount === 0) {
-      res.status(400).json({ message: "Please enter a valid amount" });
+      return res.status(400).json({ message: "Please enter a valid amount" });
     }
     await expense.save();
-    res.status(200).json({ message: "Expense added successfully" });
+    return res.status(200).json({ message: "Expense added successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong", error });
+    return res.status(500).json({ message: "Something went wrong", error });
   }
 };
 

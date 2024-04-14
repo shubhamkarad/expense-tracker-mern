@@ -4,7 +4,6 @@ import { useWindowSize } from "../../utils/useWindowSize";
 
 export const Orb = () => {
   const { width, height } = useWindowSize();
-  console.log(width, height);
   const moveOrb = keyframes`
         0% {
             transform: translate(0, 0);
@@ -28,5 +27,5 @@ export const Orb = () => {
     animation: ${moveOrb} 15s alternate linear infinite;
   `;
 
-  return <OrbStyled>Orb</OrbStyled>;
+  return <OrbStyled></OrbStyled>;
 };
